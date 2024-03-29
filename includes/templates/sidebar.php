@@ -20,11 +20,17 @@ if (isset($pageTitle)) {
 <body>
   <div class="conatiner">
     <section class="sidebar">
-      <h1 class="logo"><a href="/">My<span>Farm</span></a></h1>
+      <div class="header">
+        <h1 class="logo"><a href="/">My<span>Farm</span></a></h1>
+        <p class="user"><?= $_SESSION['user']['username'] . '@' . $_SESSION['user']['role']  ?></p>
+      </div>
       <div class="links">
         <ul>
-          <li><a href="#">Link One</a></li>
-          <li><a href="#">Link Tow</a></li>
+          <?php if ($_SESSION['user']['role'] == 'administrateur') : ?>
+            <li><a href="fermes.php">Fermes</a></li>
+            <li><a href="ajoute-ferme.php">Ajoute Ferme</a></li>
+          <?php endif; ?>
+
           <li><a href="#">Link Three</a></li>
           <li><a href="#">Link Four</a></li>
           <li><a href="#">Link Fivee</a></li>

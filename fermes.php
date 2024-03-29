@@ -2,18 +2,18 @@
 
 require('config.php');
 
-
 if (!isset($_SESSION['user'])) {
   header("Location: login.php");
   exit;
 }
 
-$pageTitle = "Home Page";
+$pageTitle = "Add Ferme";
 require('includes/templates/sidebar.php');
-dump($_SESSION['user'])
 ?>
+<main>
+  <h1>Here I Display All fermes</h1>
+</main>
 
-<main>Page Content here</main>
 </div>
 </body>
 

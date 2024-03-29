@@ -20,14 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         FROM comptes 
         JOIN utilisateur 
         ON comptes.codeutilisateur = utilisateur.code
-        WHERE comptes.etat = 'active' AND comptes.username = ?;"
+        WHERE comptes.etat = 'active' AND comptes.username = ? OR utilisateur.email = ?;"
     );
-    $stmt->bind_param("s", $user);
+    $stmt->bind_param("ss", $user, $user);
     $stmt->execute();
     // Get result
     $result = $stmt->get_result();
     if ($result->num_rows !== 1) {
-      $error .= "Wrong username or password";
+      $error .= "Wrong Credentials";
     } else {
       $user = $result->fetch_assoc();
       $stmt->close();
@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
         unset($thisUser['password'], $thisUser['etat'], $thisUser['codeutilisateur']);
         $_SESSION['user'] = $thisUser;
-        $success = "<span>" . $_SESSION['user']['prenom'] . "!</span> Logged in Perfectly";
+        $success = "<span>" . $_SESSION['user']['prenom'] . "</span>! Logged in Perfectly";
         header("REFRESH: 3; URL=index.php?loggedIn=true");
       } else {
-        $error .= "Wrong username or password";
+        $error .= "Wrong Credentials";
       }
     }
   }
@@ -71,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" name="user" id="username" placeholder="Enter votre username" required />
+      <label for="username">Email or Username</label>
+      <input type="text" name="user" id="username" placeholder="Enter votre email or username" />
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" name="pass" id="password" placeholder="Enter votre password" required />
+      <input type="password" name="pass" id="password" placeholder="Enter votre password" />
     </div>
 
     <?php if (!empty($error)) : ?>
