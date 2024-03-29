@@ -8,8 +8,12 @@ if (!isset($_SESSION['user'])) {
   exit;
 }
 
-require('includes/templates/header.php');
+$pageTitle = "Home Page";
+require('includes/templates/sidebar.php');
+?>
 
-echo "Home Page";
+<main>Page Content here</main>
+</div>
+</body>
 
-require('includes/templates/footer.php');
+</html>
