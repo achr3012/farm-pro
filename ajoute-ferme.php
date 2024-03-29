@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $date_cessation_activite = new DateTime($f['date_cessation_activite']);
     $stmt = $mysql->prepare("INSERT INTO `ferme` 
-    (`nom_ferme`, `adresse`, `type_ferme`, `statut_economique`, `capital`, `date_entree_activite`,
+    (`name`, `address`, `type_ferme`, `statut_economique`, `capital`, `date_entree_activite`,
     `etat`, `date_cessation_activite`, `superficie_globale`, `superficie_du_bati`) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param(

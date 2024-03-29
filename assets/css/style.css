@@ -121,6 +121,8 @@ main {
 
 .page-title svg {
   width: 33px;
+  color: #689e4b;
+  margin-right: 10px;
 }
 
 .ajoute-ferme {
@@ -213,4 +215,78 @@ button[type="submit"]:hover {
   border-radius: 5px;
   font-size: 16px;
   width: fit-content;
+}
+
+/* ------------------------------------------ */
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  font-size: 0.8em;
+  margin-top: 1rem;
+}
+
+.table-row {
+  display: flex;
+}
+
+.table .header {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+.table-cell {
+  padding: 5px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-cell:nth-child(1) {
+  width: 4%;
+}
+
+.table-cell:nth-child(2) {
+  width: 9%;
+}
+
+.table-cell:nth-child(3) {
+  width: 12%;
+}
+
+.table-cell:nth-child(4) {
+  width: 9%;
+}
+
+.table-cell:nth-child(5) {
+  width: 8%;
+}
+
+.table-cell:nth-child(6) {
+  width: 8%;
+}
+
+.table-cell:nth-child(7) {
+  width: 10%;
+}
+
+.table-cell:nth-child(8) {
+  width: 10%;
+}
+
+.table-cell:nth-child(9) {
+  width: 8%;
+}
+
+.table-cell:nth-child(10) {
+  width: 7%;
+}
+
+.table-cell:nth-child(11) {
+  width: 7%;
+}
+
+.table-cell:nth-child(12) {
+  width: 8%;
 }
