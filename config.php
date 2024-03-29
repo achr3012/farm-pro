@@ -1,5 +1,11 @@
 <?php
 
+include "includes/dbConn.php";
 session_start();
 
-include "includes/functions.php";
+function dump($var)
+{
+  echo "<pre>";
+  var_dump($var);
+  echo "</pre>";
+}

@@ -3,13 +3,13 @@
 require('config.php');
 
 
-if (!isLoggedIn()) {
+if (!isset($_SESSION['user'])) {
   header("Location: login.php");
   exit;
 }
 
-require('includes/header.php');
+require('includes/templates/header.php');
 
 echo "Home Page";
 
-require('includes/footer.php');
+require('includes/templates/footer.php');
