@@ -17,8 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ) {
     $error = "Please fill all the fields.";
   } else {
-
-    $date_cessation_activite = new DateTime($f['date_cessation_activite']);
     $stmt = $mysql->prepare("INSERT INTO `ferme` 
     (`name`, `address`, `type_ferme`, `statut_economique`, `capital`, `date_entree_activite`,
     `etat`, `date_cessation_activite`, `superficie_globale`, `superficie_du_bati`) 

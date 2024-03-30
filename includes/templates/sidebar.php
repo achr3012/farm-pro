@@ -27,8 +27,11 @@ if (isset($pageTitle)) {
       <div class="links">
         <ul>
           <?php if ($_SESSION['user']['role'] == 'administrateur') : ?>
-            <li><a href="fermes.php">Fermes</a></li>
             <li><a href="ajoute-ferme.php">Ajoute Ferme</a></li>
+          <?php endif; ?>
+
+          <?php if ($_SESSION['user']['role'] == 'administrateur' || $_SESSION['user']['role'] == 'consultant') : ?>
+            <li><a href="fermes.php">Fermes</a></li>
           <?php endif; ?>
 
           <li><a href="#">Link Three</a></li>

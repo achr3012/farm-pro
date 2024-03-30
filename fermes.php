@@ -50,7 +50,7 @@ require('includes/templates/sidebar.php');
 
         <div class="table-row">
           <div class="table-cell"><a href="ferme.php?code=<?= $f['code']; ?>"><?= $f['code']; ?></a></div>
-          <div class="table-cell"><?= $f['name']; ?></div>
+          <div class="table-cell"><a href="ferme.php?code=<?= $f['code']; ?>"><?= $f['name']; ?></a></div>
           <div class="table-cell"><?= $f['address']; ?></div>
           <div class="table-cell"><?= $f['type_ferme']; ?></div>
           <div class="table-cell"><?= $f['statut_economique']; ?></div>
