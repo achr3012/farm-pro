@@ -34,6 +34,11 @@ if (isset($pageTitle)) {
             <li><a href="fermes.php">Fermes</a></li>
           <?php endif; ?>
 
+          <?php if ($_SESSION['user']['role'] !== 'administrateur' && !empty($_SESSION['user']['codeferme'])) : ?>
+            <li><a href="ferme.php">My Ferme</a></li>
+          <?php endif; ?>
+
+          <li><a href="modifier-compte.php">Modifier mon Compte</a></li>
           <li><a href="#">Link Three</a></li>
           <li><a href="#">Link Four</a></li>
           <li><a href="#">Link Fivee</a></li>

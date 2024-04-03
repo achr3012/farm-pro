@@ -16,30 +16,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error .= "Please fill all the fields";
   } else {
     $stmt = $mysql->prepare(
-      "SELECT comptes.*, utilisateur.*
-        FROM comptes 
-        JOIN utilisateur 
-        ON comptes.codeutilisateur = utilisateur.code
-        WHERE comptes.etat = 'active' AND comptes.username = ? OR utilisateur.email = ?;"
+      "SELECT user.*, compte.*
+        FROM user 
+        JOIN compte 
+        ON user.id = compte.id
+        WHERE user.etat = 'active'
+        AND user.username = ?;"
     );
-    $stmt->bind_param("ss", $user, $user);
+    $stmt->bind_param("s", $user);
     $stmt->execute();
     // Get result
     $result = $stmt->get_result();
     if ($result->num_rows !== 1) {
-      $error .= "Wrong Credentials";
+      $error .= "Wrong Credentials.";
     } else {
       $user = $result->fetch_assoc();
       $stmt->close();
       $mysql->close(); // Close connection
       if (password_verify($pass, $user['password'])) {
-        $thisUser = array_filter($user, function ($value) {
-          return $value !== null;
-        });
-        unset($thisUser['password'], $thisUser['etat'], $thisUser['codeutilisateur']);
-        $_SESSION['user'] = $thisUser;
-        $success = "<span>" . $_SESSION['user']['prenom'] . "</span>! Logged in Perfectly";
-        header("REFRESH: 3; URL=index.php?loggedIn=true");
+        unset($user['password'], $user['etat']);
+        $_SESSION['user'] = $user;
+        if (isset($user['prenom'])) {
+          $success = "<span>" . $user['prenom'] . "</span>! Logged in Perfectly";
+          header("REFRESH: 3; URL=index.php?loggedIn=true");
+        } else {
+          $success = "<span>Connecté</span>, mais vous devez d'abord Modifier votre Compte";
+          header("REFRESH: 5; URL=modifier-compte.php");
+        }
       } else {
         $error .= "Wrong Credentials";
       }

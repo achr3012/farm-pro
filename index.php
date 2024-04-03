@@ -10,10 +10,13 @@ if (!isset($_SESSION['user'])) {
 
 $pageTitle = "Home Page";
 require('includes/templates/sidebar.php');
-dump($_SESSION['user'])
+
 ?>
 
-<main>Page Content here</main>
+<main>
+  Page Content here
+  <?php dump($_SESSION['user']); ?>
+</main>
 </div>
 </body>
 
